@@ -1,0 +1,39 @@
+---
+name: Bug report
+description: Report a reproducible skill or plugin problem
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include client data, tokens, cookies, or private paths.
+  - type: input
+    id: plugin
+    attributes:
+      label: Plugin and skill
+      placeholder: wylie-ux-planning / wireframe-composer
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: OS, Claude Code version, Python version if relevant
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized logs or evidence

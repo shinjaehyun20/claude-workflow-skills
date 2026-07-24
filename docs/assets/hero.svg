@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">Wylie Claude Workflow Skills</title>
+  <desc id="desc">근거에서 검증까지 이어지는 세 개의 Claude Code 플러그인</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#312E81"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity=".25"/></filter>
+  </defs>
+  <rect width="1200" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="1080" cy="80" r="150" fill="#8B5CF6" opacity=".16"/>
+  <circle cx="1050" cy="410" r="220" fill="#06B6D4" opacity=".10"/>
+  <text x="72" y="116" fill="#A5B4FC" font-family="Arial, sans-serif" font-size="24" font-weight="700">CLAUDE CODE · SKILLS-ONLY MARKETPLACE</text>
+  <text x="72" y="180" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="52" font-weight="800">Wylie Workflow Skills</text>
+  <text x="72" y="226" fill="#D1D5DB" font-family="Arial, sans-serif" font-size="24">업무 근거 → 설계 → 검토 → 전달 게이트</text>
+  <g filter="url(#shadow)">
+    <rect x="72" y="286" width="310" height="112" rx="18" fill="#FFFFFF" opacity=".96"/>
+    <rect x="445" y="286" width="310" height="112" rx="18" fill="#FFFFFF" opacity=".96"/>
+    <rect x="818" y="286" width="310" height="112" rx="18" fill="#FFFFFF" opacity=".96"/>
+  </g>
+  <text x="98" y="330" fill="#4338CA" font-family="Arial, sans-serif" font-size="19" font-weight="700">DOCUMENT QUALITY</text>
+  <text x="98" y="365" fill="#111827" font-family="Arial, sans-serif" font-size="22" font-weight="700">원본 보호 · 검증</text>
+  <text x="471" y="330" fill="#0F766E" font-family="Arial, sans-serif" font-size="19" font-weight="700">UX PLANNING</text>
+  <text x="471" y="365" fill="#111827" font-family="Arial, sans-serif" font-size="22" font-weight="700">Benchmark · Wireframe</text>
+  <text x="844" y="330" fill="#B45309" font-family="Arial, sans-serif" font-size="19" font-weight="700">PROJECT OPS</text>
+  <text x="844" y="365" fill="#111827" font-family="Arial, sans-serif" font-size="22" font-weight="700">분류 · 제안 검토</text>
+</svg>

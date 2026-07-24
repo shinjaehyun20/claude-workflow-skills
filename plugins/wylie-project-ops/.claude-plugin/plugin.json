@@ -1,0 +1,10 @@
+{
+  "name": "wylie-project-ops",
+  "version": "0.1.0",
+  "description": "Portable project operations and delivery workflow skills",
+  "author": {"name": "Jaehyun Shin"},
+  "homepage": "https://github.com/shinjaehyun20/wylie-claude-workflow-skills",
+  "repository": "https://github.com/shinjaehyun20/wylie-claude-workflow-skills",
+  "license": "SEE LICENSE",
+  "keywords": ["claude-code", "project-operations", "proposal", "delivery"]
+}

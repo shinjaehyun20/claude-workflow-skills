@@ -1,0 +1,352 @@
+{
+  "schema_version": "1.0.0",
+  "files": [
+    {
+      "plugin": "wylie-document-quality",
+      "skill": "artifact-style",
+      "relative_path": "SKILL.md",
+      "source_sha256": "106eab4243c3cdd97af6ddd4c33e7f91c81617acc62ad5e2361bd07381b7d133",
+      "distribution_sha256": "3d2b11cf0d7df4cd0f988e35db012808ddc724cb07725f648aad45247bd4a71c",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-document-quality",
+      "skill": "base-decision",
+      "relative_path": "SKILL.md",
+      "source_sha256": "e39c116b62a1e15b649c78e9bd621ddb8d56fb2321420158a5df7bd51055222a",
+      "distribution_sha256": "d9a117880d930b9d267aaa979cc19978220bb04d1d8eec8b24f736fb4995125e",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-document-quality",
+      "skill": "supplied-immutability",
+      "relative_path": "SKILL.md",
+      "source_sha256": "c44eef420b9202667f572d9658602a9ea66352688cc3202f2cf8617941617e03",
+      "distribution_sha256": "5c94df684748bf1bb8a291c7279703b3b0cb5374cb051f5569ac96e60761f40b",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-document-quality",
+      "skill": "supplied-scan",
+      "relative_path": "SKILL.md",
+      "source_sha256": "e16808a7ee58f2711de5814fda5510a14bde70f24d346634ff6db0b445c55c8a",
+      "distribution_sha256": "1336766a75566090a09eba0be38e67d59f0192219e3176cc7e4ec80b9f109745",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-document-quality",
+      "skill": "gate-check",
+      "relative_path": "SKILL.md",
+      "source_sha256": "7612aaf38e335b5d25b927271a806de5c55ece899309fee6f194788bf53ccfe1",
+      "distribution_sha256": "afeac2f62e2490fede19532516f7c12accc8ddff2b361f4b85fbced4280d6ee6",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "public-portal-benchmark",
+      "relative_path": "references/benchmark-targets.md",
+      "source_sha256": "c171388620771964f01f88818d0081dda590b0d929e779445ab5c3006e6788a0",
+      "distribution_sha256": "c171388620771964f01f88818d0081dda590b0d929e779445ab5c3006e6788a0",
+      "transformations": [],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "public-portal-benchmark",
+      "relative_path": "SKILL.md",
+      "source_sha256": "a1f2217dddf0ff06937f59fe499a9da8d1d301ec926ca09de93084f629fdfe8d",
+      "distribution_sha256": "69db8accffa2866d7e04459551955544addc0a0fc955cf291a7896002bad5ad9",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "asis-tobe-analysis",
+      "relative_path": "references/krds-checklist.md",
+      "source_sha256": "4cec24fccdbf0ec5194d5c83c66a918a862f96fa6f81905378d697fd3b19e84d",
+      "distribution_sha256": "4cec24fccdbf0ec5194d5c83c66a918a862f96fa6f81905378d697fd3b19e84d",
+      "transformations": [],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 1,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "asis-tobe-analysis",
+      "relative_path": "SKILL.md",
+      "source_sha256": "c403cd2e57f94cd8abdadb1948769cd6227e7d798bceaafe7add13ed34ee41b7",
+      "distribution_sha256": "f21995991bccc0dd3f762bc6e8b1576053f46ca658396315f24f547a9ff74de9",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "wireframe-composer",
+      "relative_path": "references/krds-checklist.md",
+      "source_sha256": "4cec24fccdbf0ec5194d5c83c66a918a862f96fa6f81905378d697fd3b19e84d",
+      "distribution_sha256": "4cec24fccdbf0ec5194d5c83c66a918a862f96fa6f81905378d697fd3b19e84d",
+      "transformations": [],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 1,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "wireframe-composer",
+      "relative_path": "references/screen-type-guide.md",
+      "source_sha256": "e3916696205d6b2fb787c0a33a8c45494d4f569b6fdd03611f070809c19b860a",
+      "distribution_sha256": "e3916696205d6b2fb787c0a33a8c45494d4f569b6fdd03611f070809c19b860a",
+      "transformations": [],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 1,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "wireframe-composer",
+      "relative_path": "SKILL.md",
+      "source_sha256": "8fdcac29e308333830c7ce239d93c2ff92b683328414ef5cf16d80e5094ec891",
+      "distribution_sha256": "2aaebb556227afa163a904a934c05d348453dfb4adc5cae75293b8459ca6c76f",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-ux-planning",
+      "skill": "design-spec-review",
+      "relative_path": "SKILL.md",
+      "source_sha256": "7c82c713dff7ed396a30ab02774d131f40a6be25ad1c026f34755671d886aa1a",
+      "distribution_sha256": "97e8bfd7e26d8a98904f52d01577c1ce3e6a6743819a6d9431f40832df04b67e",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-project-ops",
+      "skill": "wylie-folder-organizer",
+      "relative_path": "references/routing-rules.json",
+      "source_sha256": "5bbe8030ccea28e08816a4caa5506fa212fe91e60545fe029ac7982aafe5151c",
+      "distribution_sha256": "5bbe8030ccea28e08816a4caa5506fa212fe91e60545fe029ac7982aafe5151c",
+      "transformations": [],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-project-ops",
+      "skill": "wylie-folder-organizer",
+      "relative_path": "references/taxonomy.md",
+      "source_sha256": "517ef832326e0d3f4fb85bf10de42f264d39ff1a24ebefccf70ec3ed591a40d2",
+      "distribution_sha256": "5a2a5e6e01d8c14f1dc1620877d3190c1bd64d2558d4fd76f653e7f66e760e85",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-project-ops",
+      "skill": "wylie-folder-organizer",
+      "relative_path": "scripts/analyze_template.py",
+      "source_sha256": "5774a1a482704b0c13352c26047aeeed3a88b459a4096df4cc9c43940b586fb4",
+      "distribution_sha256": "5774a1a482704b0c13352c26047aeeed3a88b459a4096df4cc9c43940b586fb4",
+      "transformations": [],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-project-ops",
+      "skill": "wylie-folder-organizer",
+      "relative_path": "scripts/organize_project.py",
+      "source_sha256": "39e17923248be7773919633366e1cbf378833b3666bd8f9608c4cdf7e7a782db",
+      "distribution_sha256": "39e17923248be7773919633366e1cbf378833b3666bd8f9608c4cdf7e7a782db",
+      "transformations": [],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 6,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-project-ops",
+      "skill": "wylie-folder-organizer",
+      "relative_path": "SKILL.md",
+      "source_sha256": "e1ac496b4e54ea8da988fa0253e24c52733f2b9f0b283c2ce1d6ae44b8c70ab3",
+      "distribution_sha256": "ae4c2dc4f5bbe5cac4fa29b29b19c089b9508f07a088d6c882ffee372d210c8e",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    },
+    {
+      "plugin": "wylie-project-ops",
+      "skill": "proposal-review",
+      "relative_path": "SKILL.md",
+      "source_sha256": "0952cb6a7a534ccf91226f89d581e64709bf5cf64b7c7c12c14ce8a31b223cba",
+      "distribution_sha256": "02db79498ad8eab93a2afb71c80b076d326aaa8966351f42aeadd0bb38b927a2",
+      "transformations": [
+        "maintainer_override"
+      ],
+      "distribution_risk_flags": {
+        "absolute_windows_path": 0,
+        "private_unix_path": 0,
+        "credential_language": 0,
+        "runtime_coupling": 0,
+        "external_action": 0,
+        "client_identifier": 0,
+        "personal_identifier": 0
+      }
+    }
+  ]
+}
