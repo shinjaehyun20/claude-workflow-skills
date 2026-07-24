@@ -1,44 +1,49 @@
 # Workflow Map
 
-## 1. UX planning
+## 현재 단계: standalone skill first
 
 ```text
-project evidence
-  └─ public-portal-benchmark
-       output: benchmark-report.md
-       └─ asis-tobe-analysis
-            output: tobe-analysis-report.md, screen-requirements.md
-            └─ wireframe-composer
-                 output: screen-list.md, interaction-map.md, wireframes
-                 └─ design-spec-review
-                      output: design-review-report, review-ledger
+Claude 원본 스킬(read-only)
+  → session-to-skill 선택
+  → portable override
+  → skills/session-to-skill
+  → 사용 가이드
+  → 정적 검증
+  → Claude Code fixture smoke
+  → private GitHub push
 ```
 
-### Handoff contract
-
-- Benchmark → TO-BE: URL, 확인일, 비교표, 시사점 ID
-- TO-BE → Wireframe: 문제 ID, 개선 ID, 화면 ID, 수용 기준
-- Wireframe → Design review: 기준 버전, 화면 목록, 상태·인터랙션, 렌더
-
-## 2. Document quality
+## session-to-skill 입출력
 
 ```text
-supplied-scan
-  └─ supplied-immutability
-       └─ base-decision
-            └─ artifact-style
-                 └─ gate-check
+입력
+  ├─ 현재 대화 또는 transcript
+  ├─ 원하는 작업 범위
+  └─ 선택: 이름, 설치 범위, 검증 로그
+
+처리
+  ├─ 트리거·목적 추출
+  ├─ 도구·단계·산출물 추출
+  ├─ 실패·수리·검증 추출
+  ├─ 기존 스킬 중복 확인
+  └─ 개인정보·환경 의존성 제거
+
+출력
+  ├─ SKILL.md
+  ├─ 사용 가이드
+  ├─ 선택: references/scripts
+  └─ 검증 결과
 ```
 
-각 단계는 이전 단계의 evidence를 입력으로 받는다. `gate-check`는 앞 단계 누락을 자동으로 면책하지 않는다.
+## 플러그인 승격 조건
 
-## 3. Project operations
+관련 스킬이 각자 아래 게이트를 통과한 뒤에만 묶습니다.
 
-- `wylie-folder-organizer`: 문서 구조를 분석하고 dry-run 분류를 만든다.
-- `proposal-review`: RFP와 제안서를 심사위원 관점으로 검토한다.
+- standalone 설치 가능
+- 자연어·명시 호출 가능
+- fixture 행동 smoke 통과
+- 입력·산출물 handoff 명시
+- 단독 사용과 묶음 사용의 차이 문서화
+- plugin 설치·업데이트·제거 별도 검증
 
-두 스킬은 같은 플러그인에 있지만 자동 연쇄하지 않는다. 파일 정리가 제안서 평가의 선행 조건은 아니기 때문이다.
-
-## Excluded boundary
-
-내부 runtime 소유권과 미완료 자동화를 포함한 delivery-lifecycle은 범용화가 끝날 때까지 v0.1에서 제외한다. 공개 가능한 계약은 입력·산출·게이트가 독립적으로 검증될 때만 추가한다.
+현재 plugin count는 0입니다.

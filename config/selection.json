@@ -1,24 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "source_root_env": "CLAUDE_SKILLS_HOME",
   "default_source_root": "~/.claude/skills",
-  "plugins": {
-    "wylie-document-quality": [
-      "artifact-style",
-      "base-decision",
-      "supplied-immutability",
-      "supplied-scan",
-      "gate-check"
-    ],
-    "wylie-ux-planning": [
-      "public-portal-benchmark",
-      "asis-tobe-analysis",
-      "wireframe-composer",
-      "design-spec-review"
-    ],
-    "wylie-project-ops": [
-      "wylie-folder-organizer",
-      "proposal-review"
-    ]
-  }
+  "daily_release_limit": 2,
+  "skills": [
+    "session-to-skill"
+  ],
+  "plugins": {}
 }

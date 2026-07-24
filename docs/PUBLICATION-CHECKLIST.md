@@ -1,47 +1,54 @@
 # Publication Checklist
 
-## Repository
+## Daily scope
 
-- [ ] Repository is created as private
-- [ ] About description, topics, and README are set
-- [ ] Default branch is `main`
-- [ ] Validation workflow passes
-- [ ] Initial tag is not created before validation
+- [ ] 오늘 선택한 스킬이 1~2개 이하
+- [ ] 각 스킬이 이전 검증 대상과 독립적으로 설명됨
+- [ ] plugin bundling은 standalone 검증 뒤로 보류됨
 
 ## Source protection
 
 - [ ] `python tools/import_and_analyze.py` passes
 - [ ] Source immutability is `PASS`
-- [ ] Every imported file has a source SHA-256
-- [ ] Claude Code, Hermes, and Codex originals are unchanged
+- [ ] 모든 원본 `SKILL.md`에 source SHA-256 존재
+- [ ] Claude Code 원본과 비대상 런타임 원본 무변경
 
-## Portability
+## Per-skill documentation
 
-- [ ] No personal absolute paths
-- [ ] No client identifiers not approved for sharing
-- [ ] No runtime ownership contracts
-- [ ] Required and optional dependencies are explicit
-- [ ] Missing-tool fallback exists
+- [ ] 언제 사용하면 좋은지
+- [ ] 언제 사용하지 않는지
+- [ ] 자연어·명시 호출 예시
+- [ ] 입력·산출물·의존성
+- [ ] 개인정보·경로 portability
+- [ ] 실패·복구
+- [ ] 제한사항
 
-## Security
+## Verification layers
 
-- [ ] Secret scan passes
-- [ ] No token, cookie, OAuth state, email archive, or private API
-- [ ] No automatic external send/upload/publish/delete
-- [ ] File-moving tools default to dry-run
+- [ ] Frontmatter와 디렉터리명 일치
+- [ ] JSON/Python/링크/위험 문자열 정적 검사
+- [ ] fixture contract 존재
+- [ ] 실제 Claude Code에서 저위험 fixture smoke 실행
+- [ ] 필수 응답 marker 확인
+- [ ] 원본 source hash 재확인
 
-## Plugin quality
+## Remote
 
-- [ ] Marketplace JSON is valid
-- [ ] All plugin manifests are valid
-- [ ] Every skill has valid frontmatter and matching directory name
-- [ ] Installation instructions are verified in a clean Claude Code environment
-- [ ] One smoke scenario per plugin passes
+- [ ] Repository is private
+- [ ] Default branch is `main`
+- [ ] GitHub Actions green
+- [ ] Remote HEAD equals local HEAD
+- [ ] Remote clone에서 validator 재실행
 
-## Remote verification
+## Plugin phase — 현재 해당 없음
 
-- [ ] Commit is pushed
-- [ ] Remote default branch contains the expected commit
-- [ ] Raw README and marketplace manifest are reachable
-- [ ] GitHub Actions is green
-- [ ] Install from the remote marketplace succeeds
+- [ ] 관련 스킬 standalone 검증 완료
+- [ ] 묶음 사용과 단독 사용 차이 문서화
+- [ ] plugin manifest validation
+- [ ] 설치·업데이트·제거 smoke
+
+## Public transition — 별도 승인
+
+- [ ] 라이선스 확정
+- [ ] 초기 private prototype이 남은 Git history sanitation
+- [ ] 원격 가시성 전환 후 raw 파일·README 재검증

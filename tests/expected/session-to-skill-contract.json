@@ -1,0 +1,19 @@
+{
+  "skill": "session-to-skill",
+  "fixture": "tests/fixtures/session-to-skill-conversation.md",
+  "required_output_markers": [
+    "제안 이름",
+    "권장 사용 시점",
+    "트리거",
+    "입력",
+    "워크플로우",
+    "산출물",
+    "검증",
+    "원본"
+  ],
+  "forbidden_output_markers": [
+    "access_token",
+    "client_secret",
+    "C:\\Users\\"
+  ]
+}

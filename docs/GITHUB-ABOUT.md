@@ -1,24 +1,8 @@
 # GitHub About
 
-## Description
-
-Portable, workflow-oriented Claude Code skills for document quality, UX planning, and project operations.
-
-## Website
-
-Leave empty for the private alpha. Add documentation or release URL after remote verification.
-
-## Topics
-
-- `claude-code`
-- `claude-skills`
-- `claude-plugin`
-- `workflow-automation`
-- `ux-planning`
-- `wireframe`
-- `document-quality`
-- `project-operations`
-
-## Social preview
-
-Use `docs/assets/hero.svg` as the source. Export a 1280×640 PNG before setting a GitHub social preview.
+- **Description**: Standalone Claude Code workflow skills, verified one or two at a time before plugin bundling
+- **Website**: repository URL
+- **Topics**: `claude-code`, `skills`, `workflow`, `session-to-skill`, `automation`, `documentation`, `validation`, `private-alpha`
+- **Visibility**: private alpha
+- **Current release**: `session-to-skill` standalone skill
+- **Plugins**: deferred until per-skill execution validation

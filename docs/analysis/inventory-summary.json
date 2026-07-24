@@ -1,0 +1,9 @@
+{
+  "schema_version": "2.0.0",
+  "direct_top_level_skill_count": 298,
+  "selected_skill_count": 1,
+  "selected_skills": [
+    "session-to-skill"
+  ],
+  "missing_selected_skills": []
+}
