@@ -14,6 +14,13 @@
   },
   "skills": {
     "session-to-skill": {
+      "display_name": "Session to Skill",
+      "summary": "검증된 대화 세션을 재사용 가능한 Claude Code 스킬로 정규화합니다.",
+      "category": "workflow-authoring",
+      "version": "1.0.0",
+      "skill_path": "skills/session-to-skill/",
+      "guide_path": "skills/session-to-skill/README.md",
+      "verification_path": "docs/verification/session-to-skill.md",
       "authorship": "owner-authored",
       "authorship_evidence": "owner-confirmed-2026-07-24",
       "generalization": "generalized",

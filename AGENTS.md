@@ -11,7 +11,7 @@ This repository is a sanitized distribution surface for Claude Code workflow ski
 
 ## Lifecycle
 
-`inventory -> select 1~2 -> copy -> sanitize -> document -> static validate -> Claude smoke -> commit -> push -> remote verify`
+`inventory -> select release batch 1~2 -> copy -> sanitize -> document -> accumulate in catalog -> static validate -> Claude smoke -> commit -> push -> remote verify`
 
 ## Standalone-first rule
 
@@ -22,6 +22,7 @@ This repository is a sanitized distribution surface for Claude Code workflow ski
 - Every skill needs a usage guide, fixture, expected behavior contract, and actual Claude Code smoke record.
 - Plugin manifest validation proves packaging only; it does not prove skill behavior.
 - Add plugins only after related standalone skills have passed their own gates.
+- `config/selection.json` is the current release batch; `config/skill-registry.json` and `skills/` are the cumulative published catalog. A new batch must not delete prior published skills.
 
 ## Publication gates
 

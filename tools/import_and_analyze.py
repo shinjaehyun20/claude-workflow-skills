@@ -83,19 +83,21 @@ def validate_release_eligibility(config: dict, selected: list[str]) -> dict:
     return registry
 
 
-def inventory_summary(source_root: Path, selected: list[str]) -> dict:
+def inventory_summary(source_root: Path, selected: list[str], published: list[str]) -> dict:
     skill_dirs = sorted(p.parent for p in source_root.glob("*/SKILL.md"))
     names = {p.name for p in skill_dirs}
     return {
         "schema_version": "2.0.0",
         "direct_top_level_skill_count": len(skill_dirs),
-        "selected_skill_count": len(selected),
-        "selected_skills": selected,
+        "release_batch_count": len(selected),
+        "release_batch": selected,
+        "published_skill_count": len(published),
+        "published_skills": published,
         "missing_selected_skills": sorted(set(selected) - names),
     }
 
 
-def import_selected(source_root: Path, selected: list[str]) -> list[dict]:
+def import_selected(source_root: Path, selected: list[str], published: list[str]) -> list[dict]:
     source_root = source_root.resolve()
     if not source_root.exists():
         raise SystemExit(f"Claude skills source not found: {source_root}")
@@ -103,9 +105,9 @@ def import_selected(source_root: Path, selected: list[str]) -> list[dict]:
         raise SystemExit("Destination must not be inside the Claude source tree")
 
     SKILLS_ROOT.mkdir(parents=True, exist_ok=True)
-    selected_set = set(selected)
+    published_set = set(published)
     for stale in SKILLS_ROOT.iterdir():
-        if stale.is_dir() and stale.name not in selected_set:
+        if stale.is_dir() and stale.name not in published_set:
             shutil.rmtree(stale)
 
     manifest: list[dict] = []
@@ -176,6 +178,21 @@ def import_selected(source_root: Path, selected: list[str]) -> list[dict]:
     return manifest
 
 
+def merge_manifest(current_batch: list[dict], selected: list[str], published: list[str]) -> list[dict]:
+    """Keep prior published-skill provenance while replacing the current release batch."""
+    manifest_path = ANALYSIS_DIR / "source-manifest.json"
+    previous: list[dict] = []
+    if manifest_path.is_file():
+        previous = json.loads(manifest_path.read_text(encoding="utf-8")).get("files", [])
+    selected_set = set(selected)
+    published_set = set(published)
+    retained = [
+        row for row in previous
+        if row.get("skill") in published_set and row.get("skill") not in selected_set
+    ]
+    return sorted(retained + current_batch, key=lambda row: (row.get("skill", ""), row.get("relative_path", "")))
+
+
 def write_reports(summary: dict, manifest: list[dict]) -> None:
     ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
     (ANALYSIS_DIR / "inventory-summary.json").write_text(
@@ -190,8 +207,8 @@ def write_reports(summary: dict, manifest: list[dict]) -> None:
         "# Claude Source Skill Analysis",
         "",
         f"- Direct top-level skills discovered: **{summary['direct_top_level_skill_count']}**",
-        f"- Selected standalone skills: **{summary['selected_skill_count']}**",
-        f"- Current release: `{', '.join(summary['selected_skills'])}`",
+        f"- Published standalone skills: **{summary['published_skill_count']}**",
+        f"- Current release batch: `{', '.join(summary['release_batch'])}`",
         "- Source mutation check: **PASS**",
         "- Full private inventory is intentionally not published.",
         "",
@@ -201,22 +218,28 @@ def write_reports(summary: dict, manifest: list[dict]) -> None:
 
 def main() -> None:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    selected = list(config.get("skills", []))
+    selected = list(config.get("release_batch", []))
     if len(selected) > int(config.get("daily_release_limit", 2)):
         raise SystemExit("Selected skill count exceeds daily release limit")
-    validate_release_eligibility(config, selected)
+    registry = validate_release_eligibility(config, selected)
+    published = sorted(
+        name for name, record in registry.get("skills", {}).items()
+        if isinstance(record, dict) and record.get("publication_eligible") is True
+    )
     source_root = Path(
         os.environ.get(config["source_root_env"], Path(config["default_source_root"]).expanduser())
     ).expanduser()
-    summary = inventory_summary(source_root, selected)
+    summary = inventory_summary(source_root, selected, published)
     if summary["missing_selected_skills"]:
         raise SystemExit(f"Missing selected skills: {summary['missing_selected_skills']}")
-    manifest = import_selected(source_root, selected)
+    current_batch = import_selected(source_root, selected, published)
+    manifest = merge_manifest(current_batch, selected, published)
     write_reports(summary, manifest)
     print(json.dumps({
         "source_root": str(source_root),
         "direct_skill_count": summary["direct_top_level_skill_count"],
-        "selected_skill_count": len(selected),
+        "release_batch_count": len(selected),
+        "published_skill_count": len(published),
         "copied_file_count": len(manifest),
         "source_immutability": "PASS",
         "release_mode": "standalone-skill-first",

@@ -1,23 +1,24 @@
 # Workflow Map
 
-## 현재 단계: standalone skill first
+## Repository 흐름: multi-skill catalog, standalone first
 
 ```text
 Claude 원본 스킬(read-only)
   → 직접 제작 근거 확인
   → 반복 가능성·독립 trigger 판정
-  → session-to-skill 선택
+  → release_batch 1~2개 선택
   → portable override
-  → skills/session-to-skill
-  → 사용 가이드
+  → skills/<skill-name> 누적
+  → registry·카탈로그 갱신
+  → 스킬별 사용 가이드·fixture
   → 정적 검증
-  → Claude Code fixture smoke
-  → private GitHub push
+  → Claude Code behavior smoke
+  → private GitHub push·fresh clone 검증
 ```
 
-직접 제작 여부와 범용화 승인 상태의 정본은 `config/skill-registry.json`입니다. 외부·adapted·forked·출처 미확정 스킬은 이 흐름에 진입하지 않습니다.
+직접 제작 여부, 범용화 승인, 전체 배포 목록의 정본은 `config/skill-registry.json`입니다. `config/selection.json`은 현재 release batch만 나타냅니다. 외부·adapted·forked·출처 미확정 스킬은 이 흐름에 진입하지 않습니다.
 
-## session-to-skill 입출력
+## 현재 카탈로그 예시: session-to-skill
 
 ```text
 입력

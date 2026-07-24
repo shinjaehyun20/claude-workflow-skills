@@ -9,7 +9,7 @@
 - Claude 사용자 영역에 설치되어 있다는 사실만으로 직접 제작한 스킬로 판정하지 않음
 - 작성자 근거가 불명확하면 release selection에 넣지 않음
 
-정본 판정은 `config/skill-registry.json`이 담당하며, `config/selection.json`의 모든 스킬은 registry gate를 통과해야 합니다.
+전체 누적 배포 카탈로그의 정본은 `config/skill-registry.json`입니다. `config/selection.json`의 `release_batch`는 이번에 갱신할 스킬만 가리키며, 모든 항목은 registry gate를 통과해야 합니다.
 
 ## 범용화 게이트
 
@@ -63,3 +63,5 @@ candidate
 - `publication_eligible`이 true가 아닌 스킬
 
 이 gate는 문서 선언이 아니라 importer 실행 이전의 강제 조건입니다.
+
+Importer는 `release_batch`만 새로 복제·갱신하고, registry에서 `publication_eligible: true`인 기존 배포 스킬과 provenance manifest는 보존합니다. 따라서 새 release가 이전 스킬을 교체하지 않고 같은 repository에 누적됩니다.

@@ -1,8 +1,9 @@
 # GitHub About
 
-- **Description**: Standalone Claude Code workflow skills, verified one or two at a time before plugin bundling
+- **Description**: Owner-authored, portable Claude Code skills collected and independently verified in one repository
 - **Website**: repository URL
-- **Topics**: `claude-code`, `skills`, `workflow`, `session-to-skill`, `automation`, `documentation`, `validation`, `private-alpha`
+- **Topics**: `claude-code`, `skills`, `workflow`, `automation`, `portable-skills`, `documentation`, `validation`, `private-alpha`
 - **Visibility**: private alpha
-- **Current release**: `session-to-skill` standalone skill
-- **Plugins**: deferred until per-skill execution validation
+- **Distribution**: multi-skill catalog with standalone installation
+- **Catalog SSOT**: `config/skill-registry.json`
+- **Plugins**: deferred until related standalone skills pass behavior and lifecycle validation

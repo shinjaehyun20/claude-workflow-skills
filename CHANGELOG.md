@@ -10,6 +10,8 @@ All notable changes follow Keep a Changelog principles.
 - 설치된 사용자 스킬 수와 직접 제작 스킬 수를 분리했습니다.
 - 범용화·스킬화·workflow 정본화 판정과 상태 흐름을 문서화했습니다.
 - importer와 validator에 authorship registry 및 generalization fail-closed gate를 추가했습니다.
+- README를 단일 스킬 소개가 아닌 누적형 multi-skill catalog 진입점으로 재구성했습니다.
+- `release_batch`와 누적 `skill-registry`를 분리해 새 배포가 기존 스킬을 삭제하지 않도록 importer·manifest·validator를 수정했습니다.
 
 ## [0.2.0-alpha] - 2026-07-24
 

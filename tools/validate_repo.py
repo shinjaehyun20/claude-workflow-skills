@@ -64,7 +64,7 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
 
 def validate_selection() -> tuple[list[str], dict]:
     config = load_json(ROOT / "config" / "selection.json")
-    selected = list(config.get("skills", []))
+    selected = list(config.get("release_batch", []))
     limit = config.get("daily_release_limit")
     if not isinstance(limit, int) or limit not in {1, 2}:
         error("daily_release_limit must be 1 or 2")
@@ -77,16 +77,16 @@ def validate_selection() -> tuple[list[str], dict]:
     return selected, config
 
 
-def validate_release_eligibility(selected: list[str], config: dict) -> None:
+def validate_release_eligibility(selected: list[str], config: dict) -> dict:
     """Require explicit owner authorship and completed generalization."""
     registry_relative = config.get("skill_registry")
     if not isinstance(registry_relative, str) or not registry_relative:
         error("skill_registry is required")
-        return
+        return {}
     registry_path = (ROOT / registry_relative).resolve()
     if not registry_path.is_relative_to(ROOT.resolve()) or not registry_path.is_file():
         error("invalid or missing skill registry")
-        return
+        return {}
     registry = load_json(registry_path)
     policy = registry.get("policy", {})
     if policy.get("allowed_authorship") != ["owner-authored"]:
@@ -105,14 +105,15 @@ def validate_release_eligibility(selected: list[str], config: dict) -> None:
             error(f"selected skill is not generalized: {name}")
         if record.get("publication_eligible") is not True:
             error(f"selected skill is not publication eligible: {name}")
+    return registry
 
 
-def validate_skills(selected: list[str]) -> None:
+def validate_skills(published: list[str]) -> None:
     skills_root = ROOT / "skills"
     actual = sorted(p.name for p in skills_root.iterdir() if p.is_dir()) if skills_root.is_dir() else []
-    if actual != sorted(selected):
-        error(f"standalone skill set mismatch: expected={sorted(selected)} actual={actual}")
-    for name in selected:
+    if actual != sorted(published):
+        error(f"standalone skill set mismatch: expected={sorted(published)} actual={actual}")
+    for name in published:
         path = skills_root / name / "SKILL.md"
         if not path.is_file():
             error(f"missing SKILL.md: skills/{name}")
@@ -131,18 +132,18 @@ def validate_skills(selected: list[str]) -> None:
             error(f"missing usage guide: skills/{name}/README.md")
 
 
-def validate_manifest(selected: list[str]) -> None:
+def validate_manifest(published: list[str]) -> None:
     manifest = load_json(ROOT / "docs" / "analysis" / "source-manifest.json")
     manifested = {row.get("skill") for row in manifest.get("files", [])}
-    if set(selected) - manifested:
-        error(f"selected skills missing from source manifest: {sorted(set(selected) - manifested)}")
+    if set(published) - manifested:
+        error(f"published skills missing from source manifest: {sorted(set(published) - manifested)}")
     for row in manifest.get("files", []):
         if row.get("relative_path") == "SKILL.md" and not row.get("source_sha256"):
             error(f"missing source hash for imported SKILL.md: {row.get('skill')}")
 
 
-def validate_fixture(selected: list[str]) -> None:
-    for name in selected:
+def validate_fixture(published: list[str]) -> None:
+    for name in published:
         fixture = ROOT / "tests" / "fixtures" / f"{name}-conversation.md"
         contract = ROOT / "tests" / "expected" / f"{name}-contract.json"
         if not fixture.is_file() or not contract.is_file():
@@ -153,6 +154,27 @@ def validate_fixture(selected: list[str]) -> None:
             error(f"fixture contract skill mismatch: {name}")
         if not data.get("required_output_markers"):
             error(f"fixture contract has no required markers: {name}")
+
+
+def validate_catalog(registry: dict, published: list[str]) -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8", errors="replace")
+    required_fields = {
+        "display_name", "summary", "category", "version",
+        "skill_path", "guide_path", "verification_path",
+    }
+    records = registry.get("skills", {})
+    for name in published:
+        record = records.get(name, {})
+        missing = sorted(field for field in required_fields if not record.get(field))
+        if missing:
+            error(f"catalog metadata missing for {name}: {missing}")
+            continue
+        for field in ("skill_path", "guide_path", "verification_path"):
+            target = ROOT / record[field]
+            if not target.exists():
+                error(f"catalog path missing for {name}: {record[field]}")
+        if f"skills/{name}/" not in readme:
+            error(f"README catalog missing published skill: {name}")
 
 
 def validate_content() -> None:
@@ -189,10 +211,15 @@ def validate_content() -> None:
 
 def main() -> int:
     selected, config = validate_selection()
-    validate_release_eligibility(selected, config)
-    validate_skills(selected)
-    validate_manifest(selected)
-    validate_fixture(selected)
+    registry = validate_release_eligibility(selected, config)
+    published = sorted(
+        name for name, record in registry.get("skills", {}).items()
+        if isinstance(record, dict) and record.get("publication_eligible") is True
+    )
+    validate_skills(published)
+    validate_manifest(published)
+    validate_fixture(published)
+    validate_catalog(registry, published)
     validate_content()
     print(json.dumps({
         "status": "PASS" if not ERRORS else "FAIL",
@@ -200,7 +227,8 @@ def main() -> int:
         "warnings": WARNINGS,
         "release_mode": "standalone-skill-first",
         "plugins": 0,
-        "skills": len(selected),
+        "release_batch": len(selected),
+        "skills": len(published),
     }, ensure_ascii=False, indent=2))
     return 1 if ERRORS else 0
 

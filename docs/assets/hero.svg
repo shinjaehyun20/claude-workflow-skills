@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
   <title id="title">Wylie Claude Workflow Skills</title>
-  <desc id="desc">하루 한두 개씩 검증하고 나중에 플러그인으로 묶는 Claude Code 스킬 저장소</desc>
+  <desc id="desc">직접 제작한 범용 Claude Code 스킬을 하나의 저장소에서 누적 관리하는 컬렉션</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#111827"/>
@@ -11,15 +11,15 @@
   <rect width="1200" height="480" rx="28" fill="url(#bg)"/>
   <circle cx="1080" cy="80" r="150" fill="#8B5CF6" opacity=".16"/>
   <circle cx="1050" cy="410" r="220" fill="#06B6D4" opacity=".10"/>
-  <text x="72" y="112" fill="#A5B4FC" font-family="Arial, sans-serif" font-size="24" font-weight="700">CLAUDE CODE · STANDALONE SKILL FIRST</text>
-  <text x="72" y="178" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="52" font-weight="800">One skill. Real verification.</text>
-  <text x="72" y="224" fill="#D1D5DB" font-family="Arial, sans-serif" font-size="24">하루 1–2개 독립 검증 → 필요할 때만 플러그인 묶음</text>
+  <text x="72" y="112" fill="#A5B4FC" font-family="Arial, sans-serif" font-size="24" font-weight="700">CLAUDE CODE · PORTABLE SKILL COLLECTION</text>
+  <text x="72" y="178" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="50" font-weight="800">Reusable skills. Verified workflows.</text>
+  <text x="72" y="224" fill="#D1D5DB" font-family="Arial, sans-serif" font-size="24">하나의 저장소 · 스킬별 독립 설치 · 검증된 워크플로우</text>
   <g filter="url(#shadow)">
     <rect x="72" y="286" width="480" height="112" rx="18" fill="#FFFFFF" opacity=".96"/>
     <rect x="612" y="286" width="516" height="112" rx="18" fill="#FFFFFF" opacity=".96"/>
   </g>
-  <text x="100" y="329" fill="#4338CA" font-family="Arial, sans-serif" font-size="19" font-weight="700">TODAY · 01</text>
-  <text x="100" y="365" fill="#111827" font-family="Arial, sans-serif" font-size="26" font-weight="700">session-to-skill</text>
-  <text x="640" y="329" fill="#0F766E" font-family="Arial, sans-serif" font-size="19" font-weight="700">GATE</text>
-  <text x="640" y="365" fill="#111827" font-family="Arial, sans-serif" font-size="22" font-weight="700">사용법 · 안전 · 실제 smoke</text>
+  <text x="100" y="329" fill="#4338CA" font-family="Arial, sans-serif" font-size="19" font-weight="700">CATALOG</text>
+  <text x="100" y="365" fill="#111827" font-family="Arial, sans-serif" font-size="26" font-weight="700">Skills grow here</text>
+  <text x="640" y="329" fill="#0F766E" font-family="Arial, sans-serif" font-size="19" font-weight="700">QUALITY GATE</text>
+  <text x="640" y="365" fill="#111827" font-family="Arial, sans-serif" font-size="22" font-weight="700">범용화 · 문서화 · 실제 smoke</text>
 </svg>
