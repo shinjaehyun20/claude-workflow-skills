@@ -105,7 +105,10 @@ def import_selected(source_root: Path, selected: list[str]) -> list[dict]:
             destination_file.parent.mkdir(parents=True, exist_ok=True)
             override_file = override_dir / relative
             if override_file.is_file():
-                destination_file.write_bytes(override_file.read_bytes())
+                if override_file.suffix.lower() in TEXT_EXTENSIONS:
+                    destination_file.write_text(read_text(override_file), encoding="utf-8", newline="\n")
+                else:
+                    destination_file.write_bytes(override_file.read_bytes())
                 transformations = ["maintainer_override"]
             elif source_file.suffix.lower() in TEXT_EXTENSIONS:
                 sanitized, transformations = sanitize_text(
@@ -130,7 +133,10 @@ def import_selected(source_root: Path, selected: list[str]) -> list[dict]:
                     continue
                 destination_file = destination_dir / relative
                 destination_file.parent.mkdir(parents=True, exist_ok=True)
-                destination_file.write_bytes(override_file.read_bytes())
+                if override_file.suffix.lower() in TEXT_EXTENSIONS:
+                    destination_file.write_text(read_text(override_file), encoding="utf-8", newline="\n")
+                else:
+                    destination_file.write_bytes(override_file.read_bytes())
                 manifest.append({
                     "skill": skill_name,
                     "relative_path": relative.as_posix(),
