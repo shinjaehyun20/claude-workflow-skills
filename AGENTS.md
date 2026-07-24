@@ -5,7 +5,7 @@ This repository is a sanitized distribution surface for Claude Code workflow ski
 ## Immutable sources
 
 - Claude Code source skills: `${CLAUDE_SKILLS_HOME}` (default: `~/.claude/skills`)
-- Hermes and Codex skills may be inspected for publication patterns only.
+- Non-target runtime skills may be inspected for publication patterns only.
 - Never edit, delete, rename, move, or overwrite source-runtime files.
 - All changes belong inside this repository.
 

@@ -125,26 +125,34 @@ def validate_fixture(selected: list[str]) -> None:
 
 def validate_content() -> None:
     roots = [ROOT / "skills", ROOT / "overrides", ROOT / "tests", ROOT / "docs", ROOT / "config"]
-    for base in roots:
-        if not base.exists():
-            continue
-        for path in sorted(p for p in base.rglob("*") if p.is_file()):
-            if path.stat().st_size > 5 * 1024 * 1024:
-                error(f"file exceeds 5 MiB: {path.relative_to(ROOT)}")
-            if path.suffix.lower() in TEXT_EXTENSIONS:
-                text = path.read_text(encoding="utf-8", errors="replace")
-                for label, pattern in FORBIDDEN.items():
-                    if pattern.search(text):
-                        error(f"{label}: {path.relative_to(ROOT)}")
-            if path.suffix.lower() == ".json":
-                load_json(path)
-            if path.suffix.lower() == ".py":
-                try:
-                    py_compile.compile(str(path), doraise=True)
-                except Exception as exc:
-                    error(f"Python syntax: {path.relative_to(ROOT)}: {exc}")
-            if path.is_symlink():
-                error(f"symlink not allowed: {path.relative_to(ROOT)}")
+    paths = [
+        path
+        for base in roots
+        if base.exists()
+        for path in base.rglob("*")
+        if path.is_file()
+    ]
+    paths.extend(
+        path for path in [ROOT / "README.md", ROOT / "AGENTS.md", ROOT / "CHANGELOG.md", ROOT / "CONTRIBUTING.md", ROOT / "SECURITY.md"]
+        if path.is_file()
+    )
+    for path in sorted(set(paths)):
+        if path.stat().st_size > 5 * 1024 * 1024:
+            error(f"file exceeds 5 MiB: {path.relative_to(ROOT)}")
+        if path.suffix.lower() in TEXT_EXTENSIONS:
+            text = path.read_text(encoding="utf-8", errors="replace")
+            for label, pattern in FORBIDDEN.items():
+                if pattern.search(text):
+                    error(f"{label}: {path.relative_to(ROOT)}")
+        if path.suffix.lower() == ".json":
+            load_json(path)
+        if path.suffix.lower() == ".py":
+            try:
+                py_compile.compile(str(path), doraise=True)
+            except Exception as exc:
+                error(f"Python syntax: {path.relative_to(ROOT)}: {exc}")
+        if path.is_symlink():
+            error(f"symlink not allowed: {path.relative_to(ROOT)}")
 
 
 def main() -> int:
