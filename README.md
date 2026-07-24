@@ -96,7 +96,7 @@ tools/                      # importer와 repository validator
   → private remote 재검증
 ```
 
-Importer는 현재 release batch만 갱신하고, registry에 이미 올라간 기존 스킬은 보존합니다. 자세한 승격 기준은 [직접 제작·범용화 정책](docs/AUTHORSHIP-AND-GENERALIZATION-POLICY.md)을 참고하세요.
+Importer는 현재 release batch만 갱신하고, registry에 이미 올라간 기존 스킬은 보존합니다. 전체 실행 순서와 실패·복구·종료 조건은 [Multi-Skill Release Pipeline](docs/MULTI-SKILL-RELEASE-PIPELINE.md), 승격 기준은 [직접 제작·범용화 정책](docs/AUTHORSHIP-AND-GENERALIZATION-POLICY.md)을 참고하세요.
 
 ## 품질 기준
 
