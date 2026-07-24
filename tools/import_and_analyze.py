@@ -154,11 +154,12 @@ def import_selected(source_root: Path, selected: list[str]) -> list[dict]:
 def write_reports(summary: dict, manifest: list[dict]) -> None:
     ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
     (ANALYSIS_DIR / "inventory-summary.json").write_text(
-        json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n"
     )
     (ANALYSIS_DIR / "source-manifest.json").write_text(
         json.dumps({"schema_version": "2.0.0", "files": manifest}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
     lines = [
         "# Claude Source Skill Analysis",
