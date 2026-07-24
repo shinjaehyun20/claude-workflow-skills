@@ -68,6 +68,16 @@ Behavior contract:
 
 Smoke 응답은 제안 이름, 권장 사용 시점, 트리거 5개, 입력, 워크플로우, 산출물, 검증, 원본 불변, 미확인 항목을 모두 구분했습니다.
 
+## Remote clone verification
+
+Private GitHub `main`을 새 temp 경로에 shallow clone한 뒤 importer와 validator를 다시 실행했습니다.
+
+- remote skill and guide present: PASS
+- plugin/marketplace absent: PASS
+- importer source immutability: PASS
+- repository validator: PASS
+- importer rerun working tree clean: PASS
+
 ## Evidence
 
 로컬 운영 증거는 저장소 밖 audit lane에 보관합니다.
