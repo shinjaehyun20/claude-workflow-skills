@@ -1,10 +1,10 @@
-# Wylie Claude Workflow Skills
+# Claude Workflow Skills
 
-> Claude Code에서 바로 설치해 사용할 수 있는 업무 자동화 스킬 모음입니다.
+> Claude Code에서 바로 설치해 사용할 수 있는 공개용 워크플로우 스킬 모음입니다.
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-skills-6B5CE7)](https://docs.anthropic.com/en/docs/claude-code)
 [![Skills](https://img.shields.io/badge/skills-1-00A86B)](#제공-스킬)
-[![License](https://img.shields.io/badge/license-internal%20use-lightgrey)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ![Claude Code 스킬 모음](docs/assets/hero.svg)
 
@@ -21,11 +21,11 @@
 ### 1. 저장소 받기
 
 ```bash
-git clone https://github.com/shinjaehyun20/wylie-claude-workflow-skills.git
-cd wylie-claude-workflow-skills
+git clone https://github.com/shinjaehyun20/claude-workflow-skills.git
+cd claude-workflow-skills
 ```
 
-이 저장소에 접근할 수 있는 GitHub 계정이 필요합니다.
+이 저장소는 공개 배포용입니다. GitHub 계정 없이도 clone할 수 있습니다.
 
 ### 2. 스킬 설치
 
@@ -85,4 +85,4 @@ skills/<skill-name>/
 
 ## 이용 범위
 
-Wylie 임직원과 승인된 협력자는 내부 업무 목적으로 사용할 수 있습니다. 외부 재배포, 공개 재라이선스, 재판매는 허용되지 않습니다. 자세한 내용은 [Internal Use License](LICENSE)를 확인하세요.
+이 저장소의 스킬과 문서는 MIT License로 공개 배포됩니다. 누구나 사용, 복사, 수정, 재배포할 수 있으며, 실제 업무 데이터·개인정보·비공개 프로젝트 맥락은 각 사용자가 별도로 제거하고 검증해야 합니다. 자세한 내용은 [MIT License](LICENSE)를 확인하세요.

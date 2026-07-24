@@ -48,7 +48,7 @@ git diff --check
 
 6. 격리된 Claude Code 환경에서 자연어 또는 명시 호출 smoke를 실행합니다.
 7. 의도한 파일만 commit·push합니다.
-8. private remote를 새 임시 디렉터리에 clone하고 같은 importer·validator·compile·diff 검사를 반복합니다.
+8. public remote를 새 임시 디렉터리에 clone하고 같은 importer·validator·compile·diff 검사를 반복합니다.
 9. 로컬 HEAD와 remote tip이 일치하고 fresh clone이 clean일 때만 `published`로 닫습니다.
 
 ## 불변 조건
@@ -79,6 +79,6 @@ git diff --check
 - 스킬별 fixture와 Claude Code behavior smoke 통과
 - 누적 published skill 보존 확인
 - 원본 hash 불변
-- private remote push 및 fresh clone 재검증
+- public remote push 및 fresh clone 재검증
 - README 카탈로그·Registry·`skills/` 일치
 - devlog와 검증 기록에 최종 commit 및 근거 기록

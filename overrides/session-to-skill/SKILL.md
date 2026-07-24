@@ -9,7 +9,7 @@ argument-hint: "[현재 세션 | 대화 내보내기/로그 경로]"
 metadata:
   version: "1.0.0"
   author: "Jaehyun Shin"
-  license: "Internal Use License"
+  license: "MIT"
   dependencies: "none"
 ---
 

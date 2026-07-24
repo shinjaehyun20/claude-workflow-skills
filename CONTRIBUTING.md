@@ -9,7 +9,7 @@
 - 하루에 1~2개 스킬만 `config/selection.json`에 추가합니다.
 - 검토 수정은 `overrides/<skill>/`에서 하고 배포본은 importer가 `skills/<skill>/`에 생성합니다.
 - 각 스킬의 standalone 검증이 끝나기 전에는 plugin manifest를 추가하지 않습니다.
-- 고객 데이터, 개인 절대경로, 토큰, 쿠키, OAuth 상태, 내부 메시지를 commit하지 않습니다.
+- 고객 데이터, 개인 절대경로, 토큰, 쿠키, OAuth 상태, 비공개 메시지를 commit하지 않습니다.
 
 ## Required per-skill package
 

@@ -14,7 +14,7 @@
       "skill": "session-to-skill",
       "relative_path": "SKILL.md",
       "source_sha256": "14076f9da4f924bd88bb7d8f908a783018b2a1cc3208bb4d9f48d47ba7c2065a",
-      "distribution_sha256": "9c99ccaf3c2f4cfafd76d4102a829d69a924813eebe6f414cf12691d3b118192",
+      "distribution_sha256": "a4bc657039c760fc8e7c5af3595fe97b1e82b5831a499ea2f31fcf490ec50c23",
       "transformations": [
         "maintainer_override"
       ]

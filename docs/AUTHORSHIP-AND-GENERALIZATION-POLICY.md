@@ -17,7 +17,7 @@
 
 1. 개인명, 고객명, 개인 절대경로, 인증정보를 제거하거나 변수화
 2. 특정 프로젝트의 일회성 절차를 재사용 가능한 trigger와 입력 계약으로 변환
-3. 특정 런타임의 비공개 hook·MCP·내부 에이전트에 대한 강제 의존 제거
+3. 특정 런타임의 비공개 hook·MCP·조직 전용 에이전트에 대한 강제 의존 제거
 4. 입력, 산출물, 의존성, 실패·복구, 검증 방법 명시
 5. 독립 fixture에서 원본 데이터를 변경하지 않는 저위험 smoke 통과
 
@@ -31,7 +31,7 @@ candidate
   → standalone package 생성
   → static validation
   → Claude Code behavior smoke
-  → private publish
+  → public-ready publish
   → 관련 standalone 누적 후 plugin eligibility 검토
 ```
 
@@ -41,7 +41,7 @@ candidate
 - `authorship-confirmed`: 직접 제작 근거 확인
 - `generalization-ready`: 범용 override와 사용 계약 완료
 - `standalone-verified`: 정적 검사와 실제 behavior smoke 통과
-- `private-published`: private 원격 배포와 fresh clone 검증 통과
+- `public-ready`: 공개 배포용 문서·라이선스·검증 통과
 - `plugin-eligible`: 관련 standalone 간 handoff와 plugin smoke까지 통과
 
 상태를 건너뛰지 않습니다. 외부 스킬을 참고해 새로 작성한 경우에도 원본과 실질적으로 같은 adapted/forked 산출물이면 이 저장소의 배포 대상이 아닙니다.

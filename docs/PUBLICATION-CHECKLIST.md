@@ -39,7 +39,7 @@
 
 ## Remote
 
-- [ ] Repository is private
+- [ ] Repository is public
 - [ ] Default branch is `main`
 - [ ] GitHub Actions green
 - [ ] Remote HEAD equals local HEAD
@@ -55,5 +55,5 @@
 ## Public transition — 별도 승인
 
 - [ ] 라이선스 확정
-- [ ] 초기 private prototype이 남은 Git history sanitation
+- [ ] 초기 비공개 prototype 흔적에 대한 Git history sanitation
 - [ ] 원격 가시성 전환 후 raw 파일·README 재검증

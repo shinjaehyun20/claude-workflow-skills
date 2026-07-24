@@ -3,11 +3,11 @@
 ## 1. 저장소 받기
 
 ```bash
-git clone https://github.com/shinjaehyun20/wylie-claude-workflow-skills.git
-cd wylie-claude-workflow-skills
+git clone https://github.com/shinjaehyun20/claude-workflow-skills.git
+cd claude-workflow-skills
 ```
 
-저장소가 private인 동안에는 접근 권한이 있는 계정이 필요합니다.
+저장소는 공개 배포용입니다. GitHub 계정 없이도 clone할 수 있습니다.
 
 ## 2. 스킬 선택
 

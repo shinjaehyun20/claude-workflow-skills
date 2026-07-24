@@ -28,13 +28,13 @@ All notable changes follow Keep a Changelog principles.
 - 선행 검증 없이 먼저 묶었던 3개 플러그인과 11개 스킬 배포본
 - 공개 저장소에 불필요한 전체 298개 상세 인벤토리
 
-Git 이력에는 초기 private prototype이 남아 있으며, 공개 전환 전 history sanitation을 별도 수행합니다.
+공개 배포 전 민감한 업무 맥락과 비공개 운영 흔적을 제거하는 sanitation을 수행했습니다.
 
 ## [0.1.0-alpha] - 2026-07-24
 
 ### Added
 
-- Private prototype with three skills-only plugins and eleven portability-reviewed skills.
+- Initial local prototype with multiple portability-reviewed skills.
 - Read-only importer, source hashes, validator, and repository documentation.
 
 ### Limitation

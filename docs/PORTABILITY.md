@@ -10,7 +10,7 @@
 
 - 현재 세션
 - 사용자가 지정한 transcript/log
-- 프로젝트 내부 evidence 파일
+- 프로젝트별 비공개 evidence 파일
 
 ### Output adapter
 

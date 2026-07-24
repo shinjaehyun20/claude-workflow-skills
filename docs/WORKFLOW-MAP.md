@@ -13,7 +13,7 @@ Claude 원본 스킬(read-only)
   → 스킬별 사용 가이드·fixture
   → 정적 검증
   → Claude Code behavior smoke
-  → private GitHub push·fresh clone 검증
+  → public GitHub push·fresh clone 검증
 ```
 
 직접 제작 여부, 범용화 승인, 전체 배포 목록의 정본은 `config/skill-registry.json`입니다. `config/selection.json`은 현재 release batch만 나타냅니다. 외부·adapted·forked·출처 미확정 스킬은 이 흐름에 진입하지 않습니다.

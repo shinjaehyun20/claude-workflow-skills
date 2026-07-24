@@ -20,6 +20,6 @@ Report suspected secrets or unsafe automation privately to the repository owner.
 
 - read-only source access
 - dry-run before file movement
-- private repository before publication review
+- public repository after publication review
 - no hooks or MCP servers in v0.1
 - no automatic external submission

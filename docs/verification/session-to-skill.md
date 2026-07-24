@@ -70,7 +70,7 @@ Smoke 응답은 제안 이름, 권장 사용 시점, 트리거 5개, 입력, 워
 
 ## Remote clone verification
 
-Private GitHub `main`을 새 temp 경로에 shallow clone한 뒤 importer와 validator를 다시 실행했습니다.
+GitHub `main`을 새 temp 경로에 shallow clone한 뒤 importer와 validator를 다시 실행했습니다.
 
 - remote skill and guide present: PASS
 - plugin/marketplace absent: PASS
