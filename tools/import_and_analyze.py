@@ -20,6 +20,8 @@ ANALYSIS_DIR = REPO_ROOT / "docs" / "analysis"
 OVERRIDES_ROOT = REPO_ROOT / "overrides"
 SKILLS_ROOT = REPO_ROOT / "skills"
 TEXT_EXTENSIONS = {".md", ".json", ".py", ".txt", ".yaml", ".yml", ".toml"}
+ALLOWED_AUTHORSHIP = {"owner-authored"}
+REQUIRED_GENERALIZATION = "generalized"
 
 LITERAL_REPLACEMENTS = {
     "C:\\Users\\jaehy": "${USER_HOME}",
@@ -56,6 +58,29 @@ def sanitize_text(text: str) -> tuple[str, list[str]]:
         if count:
             applied.append(f"regex:{pattern.pattern}:{count}")
     return text, sorted(set(applied))
+
+
+def validate_release_eligibility(config: dict, selected: list[str]) -> dict:
+    """Fail closed unless every selected skill is owner-authored and generalized."""
+    registry_relative = config.get("skill_registry")
+    if not isinstance(registry_relative, str) or not registry_relative:
+        raise SystemExit("skill_registry is required")
+    registry_path = (REPO_ROOT / registry_relative).resolve()
+    if not registry_path.is_relative_to(REPO_ROOT.resolve()) or not registry_path.is_file():
+        raise SystemExit("Invalid or missing skill registry")
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    records = registry.get("skills", {})
+    for skill_name in selected:
+        record = records.get(skill_name)
+        if not isinstance(record, dict):
+            raise SystemExit(f"Selected skill is not registered: {skill_name}")
+        if record.get("authorship") not in ALLOWED_AUTHORSHIP:
+            raise SystemExit(f"Selected skill is not owner-authored: {skill_name}")
+        if record.get("generalization") != REQUIRED_GENERALIZATION:
+            raise SystemExit(f"Selected skill is not generalized: {skill_name}")
+        if record.get("publication_eligible") is not True:
+            raise SystemExit(f"Selected skill is not publication eligible: {skill_name}")
+    return registry
 
 
 def inventory_summary(source_root: Path, selected: list[str]) -> dict:
@@ -179,6 +204,7 @@ def main() -> None:
     selected = list(config.get("skills", []))
     if len(selected) > int(config.get("daily_release_limit", 2)):
         raise SystemExit("Selected skill count exceeds daily release limit")
+    validate_release_eligibility(config, selected)
     source_root = Path(
         os.environ.get(config["source_root_env"], Path(config["default_source_root"]).expanduser())
     ).expanduser()

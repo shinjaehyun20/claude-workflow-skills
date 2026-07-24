@@ -15,6 +15,9 @@ This repository is a sanitized distribution surface for Claude Code workflow ski
 
 ## Standalone-first rule
 
+- Release only skills confirmed as directly owner-authored in `config/skill-registry.json`.
+- Third-party, adapted, forked, and unknown-authorship skills are not release candidates.
+- A selected skill must be generalized before import; installation in the source directory is not authorship proof.
 - Publish and validate each skill independently before plugin bundling.
 - Every skill needs a usage guide, fixture, expected behavior contract, and actual Claude Code smoke record.
 - Plugin manifest validation proves packaging only; it does not prove skill behavior.

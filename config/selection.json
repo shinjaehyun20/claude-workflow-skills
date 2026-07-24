@@ -2,6 +2,7 @@
   "schema_version": "2.0.0",
   "source_root_env": "CLAUDE_SKILLS_HOME",
   "default_source_root": "~/.claude/skills",
+  "skill_registry": "config/skill-registry.json",
   "daily_release_limit": 2,
   "skills": [
     "session-to-skill"

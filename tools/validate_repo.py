@@ -29,6 +29,8 @@ REQUIRED_SKILL_SECTIONS = [
     "## 실패와 복구",
     "## Anti-rationalization",
 ]
+ALLOWED_AUTHORSHIP = {"owner-authored"}
+REQUIRED_GENERALIZATION = "generalized"
 
 
 def error(message: str) -> None:
@@ -73,6 +75,36 @@ def validate_selection() -> tuple[list[str], dict]:
     if config.get("plugins"):
         error("plugin bundling is deferred until standalone skill validation")
     return selected, config
+
+
+def validate_release_eligibility(selected: list[str], config: dict) -> None:
+    """Require explicit owner authorship and completed generalization."""
+    registry_relative = config.get("skill_registry")
+    if not isinstance(registry_relative, str) or not registry_relative:
+        error("skill_registry is required")
+        return
+    registry_path = (ROOT / registry_relative).resolve()
+    if not registry_path.is_relative_to(ROOT.resolve()) or not registry_path.is_file():
+        error("invalid or missing skill registry")
+        return
+    registry = load_json(registry_path)
+    policy = registry.get("policy", {})
+    if policy.get("allowed_authorship") != ["owner-authored"]:
+        error("registry policy must allow owner-authored only")
+    if policy.get("required_generalization") != REQUIRED_GENERALIZATION:
+        error("registry policy must require generalized skills")
+    records = registry.get("skills", {})
+    for name in selected:
+        record = records.get(name)
+        if not isinstance(record, dict):
+            error(f"selected skill is not registered: {name}")
+            continue
+        if record.get("authorship") not in ALLOWED_AUTHORSHIP:
+            error(f"selected skill is not owner-authored: {name}")
+        if record.get("generalization") != REQUIRED_GENERALIZATION:
+            error(f"selected skill is not generalized: {name}")
+        if record.get("publication_eligible") is not True:
+            error(f"selected skill is not publication eligible: {name}")
 
 
 def validate_skills(selected: list[str]) -> None:
@@ -156,7 +188,8 @@ def validate_content() -> None:
 
 
 def main() -> int:
-    selected, _ = validate_selection()
+    selected, config = validate_selection()
+    validate_release_eligibility(selected, config)
     validate_skills(selected)
     validate_manifest(selected)
     validate_fixture(selected)

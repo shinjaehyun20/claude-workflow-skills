@@ -1,6 +1,6 @@
 # Wylie Claude Workflow Skills
 
-> 사용자 제작 Claude Code 스킬을 **하루 1~2개씩 독립 검증한 뒤**, 함께 쓰는 스킬만 나중에 플러그인으로 묶는 private 저장소입니다.
+> 저장소 소유자가 **직접 제작했다고 확인한** Claude Code 스킬만 범용화해 하루 1~2개씩 독립 검증하고, 함께 쓰는 스킬만 나중에 플러그인으로 묶는 private 저장소입니다.
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-standalone%20skills-6B5CE7)](https://docs.anthropic.com/en/docs/claude-code)
 [![Skills](https://img.shields.io/badge/validated%20skills-1-00A86B)](#현재-스킬)
@@ -57,16 +57,19 @@ cp -R <repo>/skills/session-to-skill ~/.claude/skills/
 
 ```text
 원본 인벤토리
+  → 직접 제작 근거 확인
   → 오늘의 스킬 1~2개 선택
   → 읽기 전용 복제
-  → 비식별화·이식성 보강
+  → 비식별화·범용화·플로우 정본화
   → 스킬별 사용 가이드
   → 구조 검증
   → 실제 Claude Code 저위험 smoke
   → private push
 ```
 
-현재 원본 top-level 스킬은 298개지만 전체를 한 번에 배포하지 않습니다. 오늘 선택된 배포 대상은 `session-to-skill` 1개입니다.
+현재 원본 top-level 스킬은 298개지만, 이는 직접 제작 수가 아니라 설치된 사용자 영역의 전체 수입니다. `config/skill-registry.json`에서 `owner-authored`로 확인되고 범용화 gate를 통과한 스킬만 선택합니다. 현재 배포 대상은 `session-to-skill` 1개입니다.
+
+자세한 기준과 정본 흐름은 [직접 제작·범용화 정책](docs/AUTHORSHIP-AND-GENERALIZATION-POLICY.md)을 참고하세요.
 
 ## 플러그인 원칙
 

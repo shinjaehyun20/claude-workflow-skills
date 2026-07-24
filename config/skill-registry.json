@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "policy": {
+    "allowed_authorship": [
+      "owner-authored"
+    ],
+    "required_generalization": "generalized",
+    "excluded_authorship": [
+      "third-party",
+      "adapted",
+      "forked",
+      "unknown"
+    ]
+  },
+  "skills": {
+    "session-to-skill": {
+      "authorship": "owner-authored",
+      "authorship_evidence": "owner-confirmed-2026-07-24",
+      "generalization": "generalized",
+      "flow_status": "private-published",
+      "publication_eligible": true
+    }
+  }
+}

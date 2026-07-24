@@ -2,6 +2,15 @@
 
 All notable changes follow Keep a Changelog principles.
 
+## [Unreleased]
+
+### Changed
+
+- 배포 대상을 직접 제작이 확인된 `owner-authored` 스킬로 제한했습니다.
+- 설치된 사용자 스킬 수와 직접 제작 스킬 수를 분리했습니다.
+- 범용화·스킬화·workflow 정본화 판정과 상태 흐름을 문서화했습니다.
+- importer와 validator에 authorship registry 및 generalization fail-closed gate를 추가했습니다.
+
 ## [0.2.0-alpha] - 2026-07-24
 
 ### Changed

@@ -2,6 +2,9 @@
 
 ## Daily scope
 
+- [ ] 선택 스킬이 `config/skill-registry.json`에서 `owner-authored`로 확인됨
+- [ ] third-party/adapted/forked/unknown 스킬이 포함되지 않음
+- [ ] 범용화 상태가 `generalized`이고 publication eligible임
 - [ ] 오늘 선택한 스킬이 1~2개 이하
 - [ ] 각 스킬이 이전 검증 대상과 독립적으로 설명됨
 - [ ] plugin bundling은 standalone 검증 뒤로 보류됨

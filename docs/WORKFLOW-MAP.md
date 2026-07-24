@@ -4,6 +4,8 @@
 
 ```text
 Claude 원본 스킬(read-only)
+  → 직접 제작 근거 확인
+  → 반복 가능성·독립 trigger 판정
   → session-to-skill 선택
   → portable override
   → skills/session-to-skill
@@ -12,6 +14,8 @@ Claude 원본 스킬(read-only)
   → Claude Code fixture smoke
   → private GitHub push
 ```
+
+직접 제작 여부와 범용화 승인 상태의 정본은 `config/skill-registry.json`입니다. 외부·adapted·forked·출처 미확정 스킬은 이 흐름에 진입하지 않습니다.
 
 ## session-to-skill 입출력
 

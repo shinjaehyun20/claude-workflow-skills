@@ -2,6 +2,9 @@
 
 ## Principles
 
+- 직접 제작이 확인된 `owner-authored` 스킬만 배포 후보로 등록합니다.
+- third-party, adapted, forked, unknown 스킬은 이 저장소에 배포하지 않습니다.
+- 설치된 스킬 수와 직접 제작한 스킬 수를 동일시하지 않습니다.
 - `~/.claude/skills` 원본은 읽기 전용입니다.
 - 하루에 1~2개 스킬만 `config/selection.json`에 추가합니다.
 - 검토 수정은 `overrides/<skill>/`에서 하고 배포본은 importer가 `skills/<skill>/`에 생성합니다.
@@ -28,6 +31,8 @@ python tools/validate_repo.py
 
 ## Pull request gate
 
+- Authorship registry: owner-authored only
+- Generalization status: generalized
 - Daily release limit: PASS
 - Source immutability: PASS
 - Standalone skill structure: PASS
