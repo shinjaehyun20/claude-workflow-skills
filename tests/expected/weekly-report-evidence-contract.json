@@ -1,0 +1,10 @@
+{
+  "skill": "weekly-report-evidence",
+  "fixture": "tests/fixtures/weekly-report-evidence-conversation.md",
+  "required_output_markers": [
+    "reporting period", "coverage ledger", "three prior-plan items", "in progress", "confirmation needed", "no publish"
+  ],
+  "forbidden_output_markers": [
+    "access_token", "client_secret", "C:\\Users\\", "publish completed"
+  ]
+}

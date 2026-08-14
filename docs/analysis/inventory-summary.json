@@ -1,13 +1,17 @@
 {
   "schema_version": "2.0.0",
-  "direct_top_level_skill_count": 298,
+  "direct_top_level_skill_count": 301,
   "release_batch_count": 1,
   "release_batch": [
-    "session-to-skill"
+    "weekly-report-evidence"
   ],
-  "published_skill_count": 1,
+  "published_skill_count": 2,
   "published_skills": [
-    "session-to-skill"
+    "session-to-skill",
+    "weekly-report-evidence"
   ],
-  "missing_selected_skills": []
+  "selected_source_skills": {
+    "weekly-report-evidence": "weekly-report"
+  },
+  "missing_selected_source_skills": []
 }
