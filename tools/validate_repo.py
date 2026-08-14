@@ -221,16 +221,46 @@ def main() -> int:
     validate_fixture(published)
     validate_catalog(registry, published)
     validate_content()
-    print(json.dumps({
-        "status": "PASS" if not ERRORS else "FAIL",
-        "errors": ERRORS,
-        "warnings": WARNINGS,
-        "release_mode": "standalone-skill-first",
-        "plugins": 0,
-        "release_batch": len(selected),
-        "skills": len(published),
-    }, ensure_ascii=False, indent=2))
+
+    status = "PASS" if not ERRORS else "FAIL"
+    json_mode = "--json" in sys.argv
+
+    if json_mode:
+        print(json.dumps({
+            "status": status,
+            "errors": ERRORS,
+            "warnings": WARNINGS,
+            "release_mode": "standalone-skill-first",
+            "plugins": 0,
+            "release_batch": len(selected),
+            "skills": len(published),
+        }, ensure_ascii=False, indent=2))
+    else:
+        print("=" * 60)
+        print("🛡️  Claude Workflow Skills Repository Validator")
+        print("=" * 60)
+        print(f"[*] Validation Status        : {status}")
+        print(f"[*] Release Mode             : standalone-skill-first")
+        print(f"[*] Selected Release Batch   : {len(selected)} skill(s)")
+        print(f"[*] Publication-Eligible Set : {len(published)} skill(s)")
+        print("-" * 60)
+        
+        if ERRORS:
+            print(f"❌ {len(ERRORS)} Validation Error(s) Detected:")
+            for idx, err in enumerate(ERRORS, 1):
+                print(f"  {idx}. {err}")
+        else:
+            print("✅ All sanity and security checks passed successfully!")
+            
+        if WARNINGS:
+            print(f"⚠️  {len(WARNINGS)} Warning(s) Detected:")
+            for idx, wrn in enumerate(WARNINGS, 1):
+                print(f"  {idx}. {wrn}")
+                
+        print("=" * 60)
+
     return 1 if ERRORS else 0
+
 
 
 if __name__ == "__main__":

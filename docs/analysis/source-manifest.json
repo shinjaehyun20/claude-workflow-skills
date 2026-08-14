@@ -2,6 +2,34 @@
   "schema_version": "2.0.0",
   "files": [
     {
+      "skill": "keepworking-loop",
+      "source_skill": "keepworking",
+      "relative_path": "README.md",
+      "source_sha256": null,
+      "distribution_sha256": "bab43641154be5c04a0082cb176d62eb0a3b1426bcdfa774b428e3b4a4738274",
+      "transformations": [
+        "maintainer_added"
+      ]
+    },
+    {
+      "skill": "keepworking-loop",
+      "source_skill": "keepworking",
+      "relative_path": "SKILL.md",
+      "source_sha256": "1ff825e91254c05d0951505e5a6f3383448940277de85e01a4fdfb154cd4a579",
+      "distribution_sha256": "7a2f83d7ae6c7d333e0606249f61842a82fb8e278c1d4aaadeb1a57bea76b3de",
+      "transformations": [
+        "maintainer_override"
+      ]
+    },
+    {
+      "skill": "keepworking-loop",
+      "source_skill": "keepworking",
+      "relative_path": "SKILL.md.gemini-version-quarantined-20260703",
+      "source_sha256": "b01cdc08f0a5e2db4882e426414a1fccb7d5e59d919dad6a38107c2ecc4eaace",
+      "distribution_sha256": "b01cdc08f0a5e2db4882e426414a1fccb7d5e59d919dad6a38107c2ecc4eaace",
+      "transformations": []
+    },
+    {
       "skill": "session-to-skill",
       "relative_path": "README.md",
       "source_sha256": null,

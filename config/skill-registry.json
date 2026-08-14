@@ -25,8 +25,8 @@
       "authorship_evidence": "owner-confirmed-by-user-2026-08-11; public override independently authored",
       "generalization": "generalized",
       "source_skill": "keepworking",
-      "flow_status": "candidate",
-      "publication_eligible": false
+      "flow_status": "static-validated",
+      "publication_eligible": true
     },
     "session-to-skill": {
       "display_name": "Session to Skill",

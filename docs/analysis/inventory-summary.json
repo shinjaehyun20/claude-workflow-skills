@@ -5,8 +5,9 @@
   "release_batch": [
     "weekly-report-evidence"
   ],
-  "published_skill_count": 2,
+  "published_skill_count": 3,
   "published_skills": [
+    "keepworking-loop",
     "session-to-skill",
     "weekly-report-evidence"
   ],
