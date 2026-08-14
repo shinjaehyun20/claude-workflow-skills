@@ -13,6 +13,21 @@
     ]
   },
   "skills": {
+    "keepworking-loop": {
+      "display_name": "Keep Working Loop",
+      "summary": "명확한 완료 조건과 검증·복구 루프로 작업을 증거 기반 종료 상태까지 진행합니다.",
+      "category": "reliable-execution",
+      "version": "0.1.0",
+      "skill_path": "skills/keepworking-loop/",
+      "guide_path": "skills/keepworking-loop/README.md",
+      "verification_path": "docs/verification/keepworking-loop.md",
+      "authorship": "owner-authored",
+      "authorship_evidence": "owner-confirmed-by-user-2026-08-11; public override independently authored",
+      "generalization": "generalized",
+      "source_skill": "keepworking",
+      "flow_status": "candidate",
+      "publication_eligible": false
+    },
     "session-to-skill": {
       "display_name": "Session to Skill",
       "summary": "검증된 대화 세션을 재사용 가능한 Claude Code 스킬로 정규화합니다.",
@@ -25,6 +40,21 @@
       "authorship_evidence": "owner-confirmed-2026-07-24",
       "generalization": "generalized",
       "flow_status": "public-ready",
+      "publication_eligible": true
+    },
+    "weekly-report-evidence": {
+      "display_name": "Evidence-Backed Weekly Report",
+      "summary": "직전 계획과 현재 원본을 대조해 근거 기반 주간보고를 작성합니다.",
+      "category": "status-reporting",
+      "version": "0.1.0",
+      "skill_path": "skills/weekly-report-evidence/",
+      "guide_path": "skills/weekly-report-evidence/README.md",
+      "verification_path": "docs/verification/weekly-report-evidence.md",
+      "authorship": "owner-authored",
+      "authorship_evidence": "owner-confirmed-by-user-2026-08-14; independently generalized public rewrite",
+      "generalization": "generalized",
+      "source_skill": "weekly-report",
+      "flow_status": "candidate",
       "publication_eligible": true
     }
   }

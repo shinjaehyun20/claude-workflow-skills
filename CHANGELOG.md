@@ -4,8 +4,14 @@ All notable changes follow Keep a Changelog principles.
 
 ## [Unreleased]
 
+### Added
+
+- `weekly-report-evidence`: 직전 계획, 기간 내 원본 기록, 귀속 검증을 대조해 확인 가능한 사실만 주간보고로 정리하는 standalone 스킬 후보를 추가했습니다.
+- 공개용 주간보고 fixture, 기대 행동 계약, 검증 기록을 추가했습니다.
+
 ### Changed
 
+- 배포본이 없는 `keepworking-loop`를 공개 카탈로그에서 제외하고, registry 상태를 후보로 되돌려 실제 `skills/` 디렉터리와 일치시켰습니다.
 - 배포 대상을 직접 제작이 확인된 `owner-authored` 스킬로 제한했습니다.
 - 설치된 사용자 스킬 수와 직접 제작 스킬 수를 분리했습니다.
 - 범용화·스킬화·workflow 정본화 판정과 상태 흐름을 문서화했습니다.

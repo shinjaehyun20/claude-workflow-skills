@@ -1,20 +1,31 @@
 # Claude Workflow Skills
 
-> Claude Code에서 바로 설치해 사용할 수 있는 공개용 워크플로우 스킬 모음입니다.
+> Claude Code에서 반복 작업을 **실행·검증·복구·증거 기반 종료**까지 진행하도록 돕는 공개 워크플로우 스킬 모음입니다.
 
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-skills-6B5CE7)](https://docs.anthropic.com/en/docs/claude-code)
-[![Skills](https://img.shields.io/badge/skills-1-00A86B)](#제공-스킬)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-skills-6B5CE7)](https://code.claude.com/docs/en/skills)
+[![Skills](https://img.shields.io/badge/skills-2-00A86B)](#제공-스킬)
+[![Validate](https://github.com/shinjaehyun20/claude-workflow-skills/workflows/Validate%20marketplace/badge.svg)](https://github.com/shinjaehyun20/claude-workflow-skills/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ![Claude Code 스킬 모음](docs/assets/hero.svg)
+
+## 무엇이 다른가
+
+이 저장소는 프롬프트 모음이 아닙니다. 각 스킬은 다음을 명시합니다.
+
+- 언제 사용하고, 언제 사용하지 않는지
+- 필요한 입력과 기대 산출물
+- 작업 순서와 실패·복구 절차
+- 검증 방법과 완료 주장에 필요한 증거
+
+공개 배포 전에는 저작권·범용화·민감정보·정적 검증·행동 fixture를 점검합니다. 설치된 스킬 수나 성공적인 명령 종료만으로 품질을 주장하지 않습니다.
 
 ## 제공 스킬
 
 | 스킬 | 무엇을 할 수 있나요? | 사용 가이드 |
 | --- | --- | --- |
-| `session-to-skill` | 반복해서 쓸 만한 대화와 작업 절차를 새로운 Claude Code 스킬로 정리합니다. | [자세히 보기](skills/session-to-skill/README.md) |
-
-스킬은 각각 독립적으로 설치할 수 있습니다. 앞으로 새로운 스킬이 추가되면 이 목록에서 필요한 것만 골라 사용하면 됩니다.
+| [`session-to-skill`](skills/session-to-skill/) | 검증된 대화 세션을 재사용 가능한 Claude Code 스킬로 정리합니다. | [자세히 보기](skills/session-to-skill/README.md) |
+| [`weekly-report-evidence`](skills/weekly-report-evidence/) | 직전 계획과 현재 원본을 대조해 근거 기반 주간보고를 작성합니다. | [자세히 보기](skills/weekly-report-evidence/README.md) |
 
 ## 빠른 시작
 
@@ -25,63 +36,30 @@ git clone https://github.com/shinjaehyun20/claude-workflow-skills.git
 cd claude-workflow-skills
 ```
 
-이 저장소는 공개 배포용입니다. GitHub 계정 없이도 clone할 수 있습니다.
-
-### 2. 스킬 설치
-
-설치할 스킬 이름을 지정합니다.
-
-```bash
-SKILL_NAME=session-to-skill
-```
-
-현재 프로젝트에만 설치하려면:
+### 2. 필요한 스킬만 프로젝트에 설치
 
 ```bash
 mkdir -p .claude/skills
-cp -R "skills/$SKILL_NAME" .claude/skills/
+cp -R skills/weekly-report-evidence .claude/skills/
 ```
 
-모든 Claude Code 프로젝트에서 사용하려면:
-
-```bash
-mkdir -p ~/.claude/skills
-cp -R "skills/$SKILL_NAME" ~/.claude/skills/
-```
-
-동일한 이름의 스킬이 이미 있다면 덮어쓰기 전에 기존 파일과 비교하세요. 운영체제별 설치·제거 방법은 [설치 가이드](docs/INSTALLATION.md)를 참고하세요.
-
-## 사용 예시
-
-`session-to-skill`을 설치한 뒤 Claude Code에서 자연어로 요청할 수 있습니다.
+Claude Code에서 다음처럼 호출합니다.
 
 ```text
-이 세션에서 반복해서 쓸 수 있는 작업 절차를 스킬로 만들어줘.
+/weekly-report-evidence 이번 주 업무 로그와 지난주 계획을 대조해 팀 주간보고를 작성해줘.
 ```
 
-또는 스킬 이름을 직접 지정합니다.
+스킬마다 독립 설치할 수 있습니다. 전역 설치는 기존 동명 스킬과의 차이를 확인한 뒤, 사용자가 명시적으로 원할 때만 선택하세요. 처음 설치하는 경우 [시작 가이드](docs/getting-started.md)를, 설치·제거 세부 절차는 [설치 가이드](docs/INSTALLATION.md)를 참고하세요.
 
-```text
-/session-to-skill 현재 세션의 검증·복구 과정을 재사용 가능한 스킬로 정리해줘.
-```
+## 품질과 공개 정책
 
-결과를 저장하기 전에는 Claude가 제안한 이름, 사용 조건, 단계, 파일 경로를 검토하세요.
+- 직접 제작이 확인된 자산만 공개 후보가 됩니다.
+- 개인명, 고객 정보, 절대 경로, 자격증명, 비공개 런타임 결합은 일반화 단계에서 제거합니다.
+- 각 스킬에는 fixture와 기대 행동 계약이 있어야 합니다.
+- 공개 배포 전에 정적 검사와 fresh-session 행동 smoke를 분리해 통과해야 합니다.
+- 이 저장소는 Claude Code 우선입니다. 다른 도구와의 호환성은 실제 adapter 검증 전에는 약속하지 않습니다.
 
-## 스킬 디렉터리
-
-각 스킬은 다음 두 파일을 제공합니다.
-
-```text
-skills/<skill-name>/
-├── SKILL.md    # Claude Code가 읽는 스킬 정의
-└── README.md   # 사용법과 예시
-```
-
-## 문서
-
-- [설치 및 제거](docs/INSTALLATION.md)
-- [변경 이력](CHANGELOG.md)
-- [기여 안내](CONTRIBUTING.md)
+자세한 기준은 [저작권·범용화 정책](docs/AUTHORSHIP-AND-GENERALIZATION-POLICY.md), [누적 릴리스 파이프라인](docs/MULTI-SKILL-RELEASE-PIPELINE.md), [기여 안내](CONTRIBUTING.md)에서 확인할 수 있습니다.
 
 ## 이용 범위
 

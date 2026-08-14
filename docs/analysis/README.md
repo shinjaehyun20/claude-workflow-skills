@@ -1,7 +1,7 @@
 # Claude Source Skill Analysis
 
-- Direct top-level skills discovered: **298**
-- Published standalone skills: **1**
-- Current release batch: `session-to-skill`
+- Direct top-level skills discovered: **301**
+- Published standalone skills: **2**
+- Current release batch: `weekly-report-evidence`
 - Source mutation check: **PASS**
 - Full private inventory is intentionally not published.

@@ -18,6 +18,26 @@
       "transformations": [
         "maintainer_override"
       ]
+    },
+    {
+      "skill": "weekly-report-evidence",
+      "source_skill": "weekly-report",
+      "relative_path": "README.md",
+      "source_sha256": null,
+      "distribution_sha256": "4e8374d9887bc8efe0c11c01b71706daedee6ee86038badf8e240154685ee50c",
+      "transformations": [
+        "maintainer_added"
+      ]
+    },
+    {
+      "skill": "weekly-report-evidence",
+      "source_skill": "weekly-report",
+      "relative_path": "SKILL.md",
+      "source_sha256": "e139733fd3ee774f3755219d7f618e22ffe87259bd1b66f3f380d738e8dc074f",
+      "distribution_sha256": "1cf510cda17bdb687493a64b038a6f15facc8707afaaaf6fd39dec00f858d896",
+      "transformations": [
+        "maintainer_override"
+      ]
     }
   ]
 }

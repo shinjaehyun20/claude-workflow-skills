@@ -83,9 +83,19 @@ def validate_release_eligibility(config: dict, selected: list[str]) -> dict:
     return registry
 
 
-def inventory_summary(source_root: Path, selected: list[str], published: list[str]) -> dict:
+def source_skill_name(registry: dict, package_name: str) -> str:
+    """Resolve a public package name to its read-only source skill name."""
+    record = registry.get("skills", {}).get(package_name, {})
+    source_name = record.get("source_skill", package_name)
+    if not isinstance(source_name, str) or not re.fullmatch(r"[a-z0-9-]+", source_name):
+        raise SystemExit(f"Invalid source skill name for package: {package_name}")
+    return source_name
+
+
+def inventory_summary(source_root: Path, selected: list[str], published: list[str], registry: dict) -> dict:
     skill_dirs = sorted(p.parent for p in source_root.glob("*/SKILL.md"))
     names = {p.name for p in skill_dirs}
+    source_skills = {package: source_skill_name(registry, package) for package in selected}
     return {
         "schema_version": "2.0.0",
         "direct_top_level_skill_count": len(skill_dirs),
@@ -93,11 +103,14 @@ def inventory_summary(source_root: Path, selected: list[str], published: list[st
         "release_batch": selected,
         "published_skill_count": len(published),
         "published_skills": published,
-        "missing_selected_skills": sorted(set(selected) - names),
+        "selected_source_skills": source_skills,
+        "missing_selected_source_skills": sorted(
+            package for package, source in source_skills.items() if source not in names
+        ),
     }
 
 
-def import_selected(source_root: Path, selected: list[str], published: list[str]) -> list[dict]:
+def import_selected(source_root: Path, selected: list[str], published: list[str], registry: dict) -> list[dict]:
     source_root = source_root.resolve()
     if not source_root.exists():
         raise SystemExit(f"Claude skills source not found: {source_root}")
@@ -112,9 +125,10 @@ def import_selected(source_root: Path, selected: list[str], published: list[str]
 
     manifest: list[dict] = []
     for skill_name in selected:
-        source_dir = (source_root / skill_name).resolve()
+        source_name = source_skill_name(registry, skill_name)
+        source_dir = (source_root / source_name).resolve()
         if source_dir.parent != source_root or not (source_dir / "SKILL.md").is_file():
-            raise SystemExit(f"Invalid or missing selected skill: {skill_name}")
+            raise SystemExit(f"Invalid or missing source skill for package {skill_name}: {source_name}")
         override_dir = OVERRIDES_ROOT / skill_name
         destination_dir = SKILLS_ROOT / skill_name
         if destination_dir.exists():
@@ -147,6 +161,7 @@ def import_selected(source_root: Path, selected: list[str], published: list[str]
                 transformations = []
             manifest.append({
                 "skill": skill_name,
+                "source_skill": source_name,
                 "relative_path": relative.as_posix(),
                 "source_sha256": before_hashes[source_file],
                 "distribution_sha256": sha256_bytes(destination_file.read_bytes()),
@@ -166,6 +181,7 @@ def import_selected(source_root: Path, selected: list[str], published: list[str]
                     destination_file.write_bytes(override_file.read_bytes())
                 manifest.append({
                     "skill": skill_name,
+                    "source_skill": source_name,
                     "relative_path": relative.as_posix(),
                     "source_sha256": None,
                     "distribution_sha256": sha256_bytes(destination_file.read_bytes()),
@@ -229,10 +245,10 @@ def main() -> None:
     source_root = Path(
         os.environ.get(config["source_root_env"], Path(config["default_source_root"]).expanduser())
     ).expanduser()
-    summary = inventory_summary(source_root, selected, published)
-    if summary["missing_selected_skills"]:
-        raise SystemExit(f"Missing selected skills: {summary['missing_selected_skills']}")
-    current_batch = import_selected(source_root, selected, published)
+    summary = inventory_summary(source_root, selected, published, registry)
+    if summary["missing_selected_source_skills"]:
+        raise SystemExit(f"Missing selected source skills: {summary['missing_selected_source_skills']}")
+    current_batch = import_selected(source_root, selected, published, registry)
     manifest = merge_manifest(current_batch, selected, published)
     write_reports(summary, manifest)
     print(json.dumps({
