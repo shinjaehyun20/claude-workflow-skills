@@ -33,6 +33,20 @@ ALLOWED_AUTHORSHIP = {"owner-authored"}
 REQUIRED_GENERALIZATION = "generalized"
 
 
+def configure_console() -> None:
+    """Keep validator diagnostics UTF-8-safe on Windows CI runners.
+
+    GitHub-hosted Windows runners can default redirected Python output to a
+    legacy code page such as cp1252. The validator deliberately emits Korean
+    and status symbols, so a diagnostics-only failure must not mask the real
+    validation result.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(encoding="utf-8", errors="backslashreplace")
+
+
 def error(message: str) -> None:
     ERRORS.append(message)
 
@@ -210,6 +224,7 @@ def validate_content() -> None:
 
 
 def main() -> int:
+    configure_console()
     selected, config = validate_selection()
     registry = validate_release_eligibility(selected, config)
     published = sorted(
