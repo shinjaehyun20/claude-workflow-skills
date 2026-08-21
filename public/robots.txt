@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://github.com/shinjaehyun20/claude-workflow-skills/sitemap.xml
