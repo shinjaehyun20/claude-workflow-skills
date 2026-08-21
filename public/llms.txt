@@ -1,0 +1,17 @@
+# Claude Workflow Skills
+
+A collection of public workflow skills for Claude Code to help with repetitive tasks including execution, validation, recovery, and evidence-based termination.
+
+## Core Features
+- Execution context: clear branching criteria for when to use and when not to use.
+- I/O contracts: clearly defined schemas for required inputs and expected artifacts.
+- Action procedures: recovery scenarios performing minimal autonomous repair and rollback upon failure.
+- Definition of done: termination verification based on actual physical evidence (file sizes, hashes, etc.) against behavior fixtures.
+
+## Available Skills
+- `keepworking-loop`: Locks the goal and executes an autonomous loop of execution, validation, minimal repair, and re-validation.
+- `session-to-skill`: Automatically extracts and generalizes validated conversation session logs into reusable Claude Code skills.
+- `weekly-report-evidence`: Quantitatively compares original work logs and previous plans to generate an evidence-based weekly report.
+
+Repository URL: https://github.com/shinjaehyun20/claude-workflow-skills
+License: MIT
